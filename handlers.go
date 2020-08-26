@@ -3,9 +3,38 @@ package main
 import "github.com/gin-gonic/gin"
 
 func index(c *gin.Context) {
-	c.HTML(200, "test.html", gin.H{
+	c.HTML(200, "index.html", gin.H{
 		"title": "Test website",
 	})
+}
+
+func home(c *gin.Context) {
+	c.HTML(200, "home.html", gin.H{
+		"title": "Test website",
+	})
+}
+func acount(c *gin.Context) {
+	c.HTML(200, "acount.html", gin.H{})
+}
+
+func imgs(c *gin.Context) {
+	c.HTML(200, "imgs.html", gin.H{})
+}
+
+func sign(c *gin.Context) {
+	c.HTML(200, "sign.html", gin.H{})
+}
+
+func login(c *gin.Context) {
+	c.HTML(200, "login.html", gin.H{})
+}
+
+func stores(c *gin.Context) {
+	c.HTML(200, "stores.html", gin.H{})
+}
+
+func mystore(c *gin.Context) {
+	c.HTML(200, "mystore.html", gin.H{})
 }
 
 func user(c *gin.Context) {
