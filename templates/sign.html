@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    {{template "partials/header" .}}
+<body>
+    <nav>
+    <a href="/">home</a>
+    <a href="/login">login</a>
+    </nav>
+    <h1>{{.Title}}</h1>
+
+    <div id="signup">
+    <input type="text" autofocus placeholder="username"><br><br>
+    <input type="text" autofocus placeholder="email"><br><br>
+    <input type="text" autofocus placeholder="nember phon"><br><br>
+    <input type="password" placeholder="password"><br><br>
+    <input type="password" placeholder="repassword"><br><br>
+
+    <button id="submit">submit</button>
+    </div>
+
+
+    <script src="app.js">// Todo : move app.js here  </script>
+</body>
+<!--{{template "partials/footer" .}}-->
+{{template "partials/globstyle" .}}
+<style>
+
+#signup {
+    position:center;
+    height: 10em;
+    position: relative; 
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+#submit {
+    width: relative;
+}
+</style>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    {{template "partials/header" .}}
+<body>
+    <nav>
+
+        <a href="/">Home</a>
+        <a href="/acount">acount</a>
+        <a href="/mystore">mystore</a>
+        <a href="/stores">stores</a>
+        <a href="/image">images</a>
+        <a href="/login">login</a>
+       <button>post item</button>
+    </nav>
+    <h1>{{.Title}}</h1>
+      <h2>Home page</h2>
+    {{template "partials/footer" .}}
+</body>
+    <script src="app.js">// Todo : move app.js here  </script>
+    {{template "partials/navbar" .}}
+    {{template "partials/globstyle" .}}
+</html>
