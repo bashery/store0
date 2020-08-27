@@ -6,28 +6,23 @@ import (
 )
 
 func router() {
-	r := gin.Default()
 	//gin.SetMode(gin.ReleaseMode)
+	r := gin.Default()
 
-	// static files
+	// static files //r.StaticFS("/static", http.Dir("static")) //r.StaticFile("/favicon.ico", "./assets/favicon.ico")
 	r.Static("/a", "./assets")
-	//r.StaticFS("/static", http.Dir("static"))
-	//r.StaticFile("/favicon.ico", "./assets/favicon.ico")
 
-	// loading templates
-	//r.LoadHTMLFiles("templates/*")
-	//r.LoadHTMLFiles("/templates/index.html", "/templates/test.html")
+	// loading templates //r.LoadHTMLFiles("templates/*") //r.LoadHTMLFiles("/templates/index.html", "/templates/test.html") //r.LoadHTMLGlob("templates/*")
 	r.LoadHTMLGlob("templates/*")
 
-	//r.LoadHTMLGlob("templates/*")
-
+	// api
 	r.POST("/user", newUser)
-	r.GET("/user", user)
+	r.POST("/login", authLogin)
+	r.GET("/user", getUser)
 
 	// templates
-	r.GET("/index", index)
 	r.GET("/", home)
-
+	r.GET("/index", index)
 	r.GET("/acount", acount)
 	r.GET("/login", login)
 	r.GET("/sign", sign)
