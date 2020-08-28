@@ -6,11 +6,12 @@
     </nav>
     <h1>{{.Title}}</h1>
       <div id=input>
-      <h2>login page</h2>
+         <h2>login page</h2>
       <input type="text" placeholder="username" autofocus><br><br>
       <input type="password" placeholder=password ><br><br>
-      <button>login</button>
-</div>
+      <button v-on:click="login" >login</button>
+
+     </div>
     <script src="a/app.js">// Todo : move app.js here  </script>
 </body>
 {{template "style.html"}}
