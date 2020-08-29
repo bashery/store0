@@ -5,11 +5,11 @@
         <a href="/sign">signup</a>
     </nav>
     <h1>{{.Title}}</h1>
-      <div id=input>
+      <div id="input">
          <h2>login page</h2>
-      <input type="text" placeholder="username" autofocus><br><br>
-      <input type="password" placeholder=password ><br><br>
-      <button v-on:click="login" >login</button>
+         <input v-model="user.username" type="text" placeholder="username" autofocus><br><br>
+         <input v-model="user.password" type="password" placeholder=password ><br><br>
+         <button v-on:click="login" >login</button>
 
      </div>
     <script src="a/app.js">// Todo : move app.js here  </script>

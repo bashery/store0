@@ -3,12 +3,13 @@
      el: '#input',
      data:{
          nil : false,
-         user: {},
+         user: {
+             username: '',
+            password: '',
+         },
      },
      methods: {
          login: function() { // undefined
-             //console.log(this.tweet.body == undefined )
-                 console.log("no data");
  
                  // hide wornning message
                  // this.nil = false,
@@ -16,10 +17,10 @@
                  // post tweeti
                  axios.post('http://localhost:8080/login',
                  this.user,
-                 // or post : {title: "new title", body: "new body"}
+                 //{username: "new user", password: "newpass"}
                  )
                  .then(function (response) {
-                     console.log(response.data)
+                     console.log(response.data.avatarlink)
                  })
                  .catch(function (error) {
                       console.log("Have an: "+ error)

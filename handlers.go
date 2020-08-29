@@ -36,10 +36,10 @@ func authLogin(c *gin.Context) {
 	db.First(&u, "username = ?", user.Username)
 	fmt.Println(u)
 	if u.Username == user.Username && u.Password == user.Password {
-		c.String(200, user.Username+" autorizy")
+		c.JSON(200, u)
 		return
 	}
-	c.String(200, user.Username+" not autorizy")
+	c.JSON(200, user.Username+" not autorizy")
 }
 
 func index(c *gin.Context) {
