@@ -20,7 +20,11 @@
                  //{username: "new user", password: "newpass"}
                  )
                  .then(function (response) {
-                     console.log(response.data.avatarlink)
+                     if (response.data == "ok") {
+                        location.replace("http://localhost:8080")
+                     } else {
+                       console.log(response.data)
+                     }
                  })
                  .catch(function (error) {
                       console.log("Have an: "+ error)

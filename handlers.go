@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
+	//"net/http"
 )
 
 // create new register new user ub database
@@ -15,7 +16,7 @@ func newUser(c *gin.Context) {
 		fmt.Println("err is : ", err)
 	}
 	db.Create(&users)
-	c.JSON(200, gin.H{"users": &users})
+	c.JSON(200, gin.H{"code": "ok"})
 }
 
 func getUser(c *gin.Context) {
@@ -36,7 +37,8 @@ func authLogin(c *gin.Context) {
 	db.First(&u, "username = ?", user.Username)
 	fmt.Println(u)
 	if u.Username == user.Username && u.Password == user.Password {
-		c.JSON(200, u)
+		//c.Redirect(http.StatusFound, "/index")
+		c.JSON(200, "ok")
 		return
 	}
 	c.JSON(200, user.Username+" not autorizy")
