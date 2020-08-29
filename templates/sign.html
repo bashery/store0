@@ -1,36 +1,64 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-        <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png"><link rel="manifest" href="/site.webmanifest"><!--<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">--><!--<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">-->
-        <meta charset="utf-8">
-        <script src="vuedev.js">// Todo : move vue.min.j here </script>
-        <script src="axios.min.js"></script><!--<script src="vue-router-3.3.4.js"></script>-->
-    </head>
+{{template "header.html"}}    
+</head>
 <body>
     <nav>
     <a href="/">home</a>
     <a href="/login">login</a>
     </nav>
-    <h1>{{.Title}}</h1>
 
-    <div id="signup">
-    <input type="text" placeholder="username" autofocus ><br><br>
-    <input type="text" placeholder="email"><br><br>
-    <input type="text" placeholder="nember phon"><br><br>
-    <input type="password" placeholder="password"><br><br>
-    <input type="password" placeholder="repassword"><br><br>
+    <div id="sign">
+    <input v-model="user.username" type="text" placeholder="username" autofocus ><br><br>
+    <input v-model="user.password" type="password" placeholder="password"><br><br>
+    <input v-model="user.email" type="text" placeholder="email"><br><br>
+    <input v-model="user.phon" type="text" placeholder="nember phon"><br><br>
 
-    <button id="submit">submit</button>
+    <button v-on:click="signup" id="submit">submit</button>
     </div>
 
 
-    <script src="app.js">// Todo : move app.js here  </script>
 </body>
-<!--{{/* template "partials/footer" . */}}-->
+<script>
+
+// sign_up logic
+var sign_up = new Vue({
+     el: '#sign',
+     data:{
+         nil : false,
+         user: {
+             //username: '',
+            //password: '',
+         },
+     },
+     methods: {
+         signup: function() { // undefined
+ 
+                 // hide wornning message
+                 // this.nil = false,
+ 
+                 // post tweeti
+                 axios.post('http://localhost:8080/newuser',
+                 this.user,
+                 //{username: "new user", password: "newpass"}
+                 )
+                 .then(function (response) {
+                     if (response.data == "ok") {
+                        location.replace("http://localhost:8080")
+                     } else {
+                       console.log(response.data)
+                     }
+                 })
+                 .catch(function (error) {
+                      console.log("Have an: "+ error)
+                 });
+             } 
+         },
+})
+
+</script>
+{{template "style.html"}}
 <style>
 
-#signup {
+#sign {
     position:center;
     height: 10em;
     position: relative; 

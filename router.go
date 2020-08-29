@@ -16,7 +16,7 @@ func router() {
 	r.LoadHTMLGlob("templates/*")
 
 	// api
-	r.POST("/user", newUser)
+	r.POST("/newuser", newUser)
 	r.POST("/login", authLogin)
 	r.GET("/user", getUser)
 

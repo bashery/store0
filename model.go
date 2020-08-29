@@ -8,7 +8,7 @@ type Product struct {
 	Price uint
 }
 
-type Users struct {
+type User struct {
 	//gorm.Model
 	Username   string `json:"username"`
 	Password   string `json:"password"`

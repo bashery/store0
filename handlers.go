@@ -9,18 +9,18 @@ import (
 
 // create new register new user ub database
 func newUser(c *gin.Context) {
-	//db.AutoMigrate(&Users{}) // Migrate the schema
+	db.AutoMigrate(&User{}) // Migrate the schema
 
-	var users Users
+	var users User
 	if err := c.BindJSON(&users); err != nil {
 		fmt.Println("err is : ", err)
 	}
 	db.Create(&users)
-	c.JSON(200, gin.H{"code": "ok"})
+	c.JSON(200, "ok") //gin.H{"code": "ok"})
 }
 
 func getUser(c *gin.Context) {
-	var user Users
+	var user User
 	db.First(&user, "userid = ?", 1) // find product with id 1
 	//db.First(&user, "code = ?", "L1212") // find product with code l1212
 	c.String(200, user.Avatarlink)
@@ -28,8 +28,8 @@ func getUser(c *gin.Context) {
 }
 
 func authLogin(c *gin.Context) {
-	var user Users
-	var u Users
+	var user User
+	var u User
 	if err := c.BindJSON(&user); err != nil {
 		fmt.Println(err)
 	}
