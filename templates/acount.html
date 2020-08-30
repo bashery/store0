@@ -1,25 +1,17 @@
-<html>
-<head>
-    {{/*template "header" .*/}}
-    <head>
-        <link rel="icon" type="image/png" sizes="32x32" href="a/icon/favicon-32x32.png"><link rel="manifest" href="/site.webmanifest"><!--<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">--><!--<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">-->
-        <meta charset="utf-8">
-        <script src="a/vuedev.js">// Todo : move vue.min.j here </script>
-        <script src="a/axios.min.js"></script><!--<script src="vue-router-3.3.4.js"></script>-->
-    </head>
-</head>
+
+{{template "header.html"}}
 <body>
 <nav>
         <a href="/">home</a>
         <a href="/new">New</a>
 </nav>
 <h3>my acount</h3>
-<img src="http://localhost:9000/imgs/turtel.jpg" >
+<img src="a/imgs/turtel.jpg" >
 <p>username:  Adam ibrahim</p>
 <p>phon : 053 987 654</p>
 
 </body>
-{{/*template "partials/globstyle" .*/}}
+{{template "style.html"}}
 <style>
 img {
     width:140px;

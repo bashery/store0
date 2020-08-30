@@ -1,4 +1,5 @@
 {{template "header.html"}}
+{{template "style.html"}}
 <nav>
         <a href="/">Home</a>
         <a href="/mystore">Mystore</a>
@@ -8,10 +9,8 @@
         <a href="/logout">Logout</a>
         <a href="/post">post</a>
     </nav>
-<p>{{.Title}}</p>
-<div id="test">
- <test></test>
-</div>                                                            
+    <body>
+<div id="center">                                                        
 <img src="a/imgs/turtel.jpg"/>
 <img src="a/imgs/food2.png"/>
 <img src="a/imgs/food3.png"/>
@@ -26,7 +25,7 @@
 <img src="a/imgs/bot4.jpg"/>
 <img src="a/imgs/vs.png"/>
 <img src="a/imgs/vs.jpg"/>
-
+</div>
 <!--<img src="data:image/png;base64, .... -->
 
 </body>
@@ -35,6 +34,8 @@
 img {
 height:150px;
 width:150px;
+padding:10px;
 }
+
 </style>
 </html>
