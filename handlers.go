@@ -19,6 +19,25 @@ func newUser(c *gin.Context) {
 	c.JSON(200, "ok") //gin.H{"code": "ok"})
 }
 
+func newProduct(c *gin.Context) {
+	db.AutoMigrate(&Product{}) // Migrate the schema
+
+	var product Product
+	if err := c.BindJSON(&product); err != nil {
+		fmt.Println("err is : ", err)
+	}
+	db.Create(&product)
+	c.JSON(200, "ok") //gin.H{"code": "ok"})
+}
+
+func getProduct(c *gin.Context) {
+	var product Product
+	db.First(&product, "productid = ?", 1) // find product with id 1
+	//db.First(&user, "code = ?", "L1212") // find product with code l1212
+	c.String(200, product.Code)
+
+}
+
 func getUser(c *gin.Context) {
 	var user User
 	db.First(&user, "userid = ?", 1) // find product with id 1
