@@ -5,9 +5,12 @@ package main
 //"github.com/jinzhu/gorm"
 //"github.com/jinzhu/gorm/dialects/mysql"
 
+func init() {
+
+	setdb()
+}
 func main() {
 	// set up db and connec
-	setdb()
 	defer db.Close()
 
 	//toures functions
