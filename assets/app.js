@@ -1,39 +1,3 @@
-// post new tweet
- var login_form = new Vue({
-     el: '#input',
-     data:{
-         nil : false,
-         user: {
-             username: '',
-            password: '',
-         },
-     },
-     methods: {
-         login: function() { // undefined
- 
-                 // hide wornning message
-                 // this.nil = false,
- 
-                 // post tweeti
-                 axios.post('http://localhost:8080/login',
-                 this.user,
-                 //{username: "new user", password: "newpass"}
-                 )
-                 .then(function (response) {
-                     if (response.data == "ok") {
-                        location.replace("http://localhost:8080")
-                     } else {
-                       console.log(response.data)
-                     }
-                 })
-                 .catch(function (error) {
-                      console.log("Have an: "+ error)
-                 });
-             } 
-         },
-})
-
-
 
 
 

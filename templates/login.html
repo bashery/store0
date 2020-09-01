@@ -7,12 +7,49 @@
     <h1>{{.Title}}</h1>
       <div id="input">
          <h2>login page</h2>
-         <input v-model="user.username" type="text" placeholder="username" autofocus><br><br>
+         <input v-model="user.email" type="text" placeholder="email" autofocus><br><br>
          <input v-model="user.password" type="password" placeholder=password ><br><br>
          <button v-on:click="login" >login</button>
 
      </div>
-    <script src="a/app.js">// Todo : move app.js here  </script>
+    <script>
+
+// post new tweet
+ var login_form = new Vue({
+     el: '#input',
+     data:{
+         nil : false,
+         user: {
+            email: '',
+            password: '',
+         },
+     },
+     methods: {
+         login: function() { // undefined
+ 
+                 // hide wornning message
+                 // this.nil = false,
+
+                 // post tweeti
+                 axios.post('http://localhost:8080/login',
+                 this.user,
+                 //{username: "new user", password: "newpass"}
+                 )
+                 .then(function (response) {
+                     if (response.data == "ok") {
+                        location.replace("http://localhost:8080")
+                     } else {
+                       console.log(response.data)
+                     }
+                 })
+                 .catch(function (error) {
+                      console.log("Have an: "+ error)
+                 });
+             } 
+         },
+})
+</script>
+<script src="a/app.js"></script>
 </body>
 {{template "style.html"}}
 <style>

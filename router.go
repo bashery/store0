@@ -12,7 +12,7 @@ func router() {
 	// static files //r.StaticFS("/static", http.Dir("static")) //r.StaticFile("/favicon.ico", "./assets/favicon.ico")
 	r.Static("/a", "./assets")
 
-	// loading templates //r.LoadHTMLFiles("templates/*") //r.LoadHTMLFiles("/templates/index.html", "/templates/test.html") //r.LoadHTMLGlob("templates/*")
+	//r.LoadHTMLFiles("/templates/index.html", "/templates/test.html") //r.LoadHTMLGlob("templates/*")
 	r.LoadHTMLGlob("templates/*")
 
 	// api
@@ -22,7 +22,6 @@ func router() {
 
 	// templates
 	r.GET("/", home)
-	r.GET("/index", index)
 	r.GET("/acount", acount)
 	r.GET("/login", login)
 	r.GET("/sign", sign)
