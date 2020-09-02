@@ -1,42 +1,37 @@
-{{template "header.html"}}    
-</head>
+{{template "header.html"}}
 <body>
     <nav>
-    <a href="/">home</a>
-    <a href="/login">login</a>
+        <a href="/">home</a>
+        <a href="/sign">signup</a>
     </nav>
+    <h1>{{.Title}}</h1>
+      <div id="input">
+         <h2>login page</h2>
+         <input v-model="user.email" type="text" placeholder="email" autofocus><br><br>
+         <input v-model="user.password" type="password" placeholder=password ><br><br>
+         <button v-on:click="login" >login</button>
 
-    <div id="sign">
-    <input v-model="user.username" type="text" placeholder="username" pattern=".{4,10}" required title="4 to 10 characters" autofocus ><br><br>
-    <input v-model="user.password" type="password" placeholder="password" pattern=".{10,}"   required title="10 characters minimum"><br><br>
-    <input v-model="user.email" type="text" placeholder="email"><br><br>
-    <input v-model="user.phon" type="text" placeholder="nember phon"><br><br>
+     </div>
+    <script>
 
-    <button v-on:click="signup" id="submit" title="resgister in this site" >submit</button>
-    </div>
-
-
-</body>
-<script>
-
-// sign_up logic
-var sign_up = new Vue({
-     el: '#sign',
+// post new tweet
+ var login_form = new Vue({
+     el: '#input',
      data:{
          nil : false,
          user: {
-             //username: '',
-            //password: '',
+            email: '',
+            password: '',
          },
      },
      methods: {
-         signup: function() { // undefined
+         login: function() { // undefined
  
                  // hide wornning message
                  // this.nil = false,
- 
+
                  // post tweeti
-                 axios.post('http://localhost:8080/newuser',
+                 axios.post('http://localhost:8080/login',
                  this.user,
                  //{username: "new user", password: "newpass"}
                  )
@@ -53,12 +48,12 @@ var sign_up = new Vue({
              } 
          },
 })
-
 </script>
+<script src="a/app.js"></script>
+</body>
 {{template "style.html"}}
 <style>
-
-#sign {
+#input {
     position:center;
     height: 10em;
     position: relative; 
@@ -70,8 +65,6 @@ var sign_up = new Vue({
     transform: translate(-50%, -50%)
 }
 
-#submit {
-    width: relative;
-}
+//#submit {    width: relative;}
 </style>
 </html>
