@@ -32,10 +32,16 @@ func newUser(c *gin.Context) {
 	db.AutoMigrate(&User{}) // Migrate the schema
 
 	var users User
-	if err := c.BindJSON(&users); err != nil {
+	var err error
+	if err = c.BindJSON(&users); err != nil {
+
 		fmt.Println("err is : ", err)
+		c.String(200, fmt.Sprintf("%s", err))
+		return
 	}
+	//if err == nil {
 	db.Create(&users)
+	//}
 	c.JSON(200, "ok") //gin.H{"code": "ok"})
 }
 
