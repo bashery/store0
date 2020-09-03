@@ -8,28 +8,10 @@ import (
 	//"net/http"
 )
 
-// create new register new user ub database
-
-func newProduct(c *gin.Context) {
-	db.AutoMigrate(&Product{}) // Migrate the schema
-
-	var product Product
-	if err := c.BindJSON(&product); err != nil {
-		fmt.Println("err is : ", err)
-	}
-	db.Create(&product)
-	c.JSON(200, "ok") //gin.H{"code": "ok"})
-}
-
-func getProduct(c *gin.Context) {
-	var product Product
-	db.First(&product, "productid = ?", 1) // find product with id 1
-	//db.First(&user, "code = ?", "L1212") // find product with code l1212
-	c.String(200, product.Code)
-}
+// create new register new user in database
 
 func newUser(c *gin.Context) {
-	db.AutoMigrate(&User{}) // Migrate the schema
+	//db.AutoMigrate(&User{}) // Migrate the schema
 
 	var users User
 	var err error
@@ -39,10 +21,8 @@ func newUser(c *gin.Context) {
 		c.String(200, fmt.Sprintf("%s", err))
 		return
 	}
-	//if err == nil {
 	db.Create(&users)
-	//}
-	c.JSON(200, "ok") //gin.H{"code": "ok"})
+	c.String(200, "ok") //gin.H{"code": "ok"})
 }
 
 var loginUsers map[string]string
@@ -71,6 +51,25 @@ func getUser(c *gin.Context) {
 	db.First(&user, "userid = ?", 1) // find product with id 1
 	//db.First(&user, "code = ?", "L1212") // find product with code l1212
 	c.String(200, user.Avatarlink)
+}
+
+// handle product
+func newProduct(c *gin.Context) {
+	db.AutoMigrate(&Product{}) // Migrate the schema
+
+	var product Product
+	if err := c.BindJSON(&product); err != nil {
+		fmt.Println("err is : ", err)
+	}
+	db.Create(&product)
+	c.JSON(200, "ok") //gin.H{"code": "ok"})
+}
+
+func getProduct(c *gin.Context) {
+	var product Product
+	db.First(&product, "productid = ?", 1) // find product with id 1
+	//db.First(&user, "code = ?", "L1212") // find product with code l1212
+	c.String(200, product.Code)
 }
 
 func index(c *gin.Context) {
