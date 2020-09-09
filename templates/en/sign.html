@@ -1,0 +1,86 @@
+{{template "header.html"}}    
+</head>
+<body>
+    <nav>
+    <a href="/">home</a>
+    <a href="/login">login</a>
+    </nav>
+
+    <div id=sign>
+    <input v-model="user.username" type="text" placeholder="username" pattern=".{4,10}" required title="4 to 30 characters" autofocus ><br><br>
+    <input v-model="user.password" type="password" placeholder="password" pattern=".{6,}" required title="6 characters minimum"><br><br>
+    <input v-model="user.email" type="text" pattern=".{14,}" placeholder="email"><br><br>
+    <input v-model="user.phon" type="text" pattern=".{10,12}" placeholder="nember phon"><br><br>
+    <button v-on:click="signup" id="submit" title="resgister in this site" value=Check>submit</button>
+    </div>
+
+
+</body>
+<script>
+
+// sign_up logic
+var sign_up = new Vue({
+     el: '#sign',
+     data:{
+         nil : false,
+         user: {
+            username: '',
+            password: '',
+            email:'',
+            phon:'',
+         },
+     },
+     methods: {
+         signup: function() { // undefined
+             let un = this.user.username
+             let pw = this.user.password
+             let em = this.user.email
+             let ph = this.user.phon
+             if (un.length > 3 && pw.length > 5 && em.length > 11 && ph.length > 9 || (ph.lenth < 13)) {
+                
+                 // this.nil = false,
+                 
+                // post tweeti
+                axios.post('http://localhost:8080/newuser',
+                this.user,
+                //{username: "new user", password: "newpass"}
+                )
+                .then(function (response) {
+                    if (response.data == "ok") {
+                       location.replace("http://localhost:8080")
+                     } else {
+                       console.log(response.data)
+                     }
+                 })
+                 .catch(function (error) {
+                      console.log("Have an: "+ error)
+                 });
+
+             } else {
+                 console.log("fill field correct")
+             }
+             } 
+         },
+})
+
+</script>
+{{template "style.html"}}
+<style>
+
+#sign {
+    position:center;
+    height: 10em;
+    position: relative; 
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+#submit {
+    width: relative;
+}
+</style>
+</html>

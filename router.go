@@ -13,7 +13,7 @@ func router() {
 	r.Static("/a", "./assets")
 
 	//r.LoadHTMLFiles("/templates/index.html", "/templates/test.html") //r.LoadHTMLGlob("templates/*")
-	r.LoadHTMLGlob("templates/*")
+	r.LoadHTMLGlob("templates/**/*")
 
 	// api
 	r.POST("/newuser", newUser)

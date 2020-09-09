@@ -37,13 +37,12 @@ func authLogin(c *gin.Context) {
 	}
 
 	db.First(&u, "email = ?", user.Email)
-	fmt.Println(u)
 	if u.Email == user.Email && u.Password == user.Password {
 		//c.Redirect(http.StatusFound, "/index")
-		c.JSON(200, "ok")
+		c.String(200, "ok")
 		return
 	}
-	c.JSON(200, user.Username+" not autorizy")
+	c.String(200, user.Username+" not autorizy")
 }
 
 func getUser(c *gin.Context) {
