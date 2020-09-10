@@ -35,10 +35,10 @@ func authLogin(c *gin.Context) {
 	if err := c.BindJSON(&user); err != nil {
 		fmt.Println(err)
 	}
+	//fmt.Println("request is :", user)
 
 	db.First(&u, "email = ?", user.Email)
 	if u.Email == user.Email && u.Password == user.Password {
-		//c.Redirect(http.StatusFound, "/index")
 		c.String(200, "ok")
 		return
 	}

@@ -37,6 +37,7 @@
                  )
                  .then(function (response) {
                      if (response.data == "ok") {
+                       console.log(response.data)
                         location.replace("http://localhost:8080")
                      } else {
                        //console.log(response.data)
