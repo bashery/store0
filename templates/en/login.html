@@ -18,7 +18,7 @@
  var login_form = new Vue({
      el: '#input',
      data:{
-         //nil : false,
+         pattern : false,
          user: {
             email: '',
             password: '',
@@ -28,7 +28,19 @@
          login: function() { // undefined
  
                  // hide wornning message
-                 // this.nil = false,
+                 //this.nil = false,
+/*
+             <div id="app-3">
+  <span v-if="seen">Now you see me</span>
+</div>
+
+var app3 = new Vue({
+  el: '#app-3',
+  data: {
+    seen: true
+  }
+})
+*/
 
                  // post tweeti
                  axios.post('http://localhost:8080/login',
