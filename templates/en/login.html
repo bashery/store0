@@ -7,10 +7,10 @@
     <h1>{{.Title}}</h1>
       <div id="input">
          <h2>login page</h2>
-         <input v-model="user.email" type="text" placeholder="email" pattern=".{6,40}" autofocus><br><br>
+         <input v-model="user.email" type="text" placeholder="email" pattern=".{6,40}" autofocus><br>
+         <span v-if="nil" style="color: red">email is not correct</span><br>
          <input v-model="user.password" type="password" placeholder=password ><br><br>
          <button v-on:click="login" >login</button>
-
      </div>
     <script>
 
@@ -18,35 +18,20 @@
  var login_form = new Vue({
      el: '#input',
      data:{
-         pattern : false,
+         nil : false,
          user: {
             email: '',
             password: '',
          },
      },
+
      methods: {
          login: function() { // undefined
- 
-                 // hide wornning message
-                 //this.nil = false,
-/*
-             <div id="app-3">
-  <span v-if="seen">Now you see me</span>
-</div>
-
-var app3 = new Vue({
-  el: '#app-3',
-  data: {
-    seen: true
-  }
-})
-*/
-
+             if (this.user.email.length <= 12) {
+                  this.nil = true
+             } else {
                  // post tweeti
-                 axios.post('http://localhost:8080/login',
-                 this.user,
-                 //{username: "new user", password: "newpass"}
-                 )
+                 axios.post('http://localhost:8080/login', this.user)
                  .then(function (response) {
                      if (response.data == "ok") {
                        console.log(response.data)
@@ -58,6 +43,7 @@ var app3 = new Vue({
                  .catch(function (error) {
                       console.log("Have an: "+ error)
                  });
+             }
              } 
          },
 })
