@@ -5,15 +5,16 @@
         <a href="/sign">signup</a>
     </nav>
     <h1>{{.Title}}</h1>
-      <div id="input">
-          <span v-if="nil" style="background-color: #F29D8A">email or password is not correct</span><br>
+    <div id="input">
+         <span v-if="nil" style="background-color: #F29D8A">email or password is not correct</span><br>
 
          <h2>login page</h2>
          <input v-model="user.email" type="text" placeholder="email" pattern=".{6,40}" autofocus><br><br>
          <input v-model="user.password" type="password" placeholder=password ><br><br>
          <button v-on:click="login" >login</button>
      </div>
-    <script>
+
+       <script>
 
 // post new tweet
  var login_form = new Vue({
@@ -60,8 +61,9 @@
 </body>
 {{template "style.html"}}
 <style>
+
 #input {
-    position:center;
+    position: center;
     height: 10em;
     position: relative; 
     margin: 0;
@@ -71,6 +73,7 @@
     margin-right: -50%;
     transform: translate(-50%, -50%)
 }
+
 
 </style>
 </html>
