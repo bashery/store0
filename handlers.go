@@ -3,6 +3,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	//"net/http"
@@ -25,10 +26,10 @@ func newUser(c *gin.Context) {
 	c.String(200, "ok") //gin.H{"code": "ok"})
 }
 
-var loginUsers map[string]string
-
+//var loginUsers map[string]string
 // authlogin login system
 func authLogin(c *gin.Context) {
+	time.Sleep(time.Second)
 
 	var user User
 	var u User
