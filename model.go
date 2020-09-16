@@ -16,3 +16,11 @@ type User struct {
 	Phon       string `json:"phon"`
 	Avatarlink string `json:"avatarlink"`
 }
+
+// TODO handle this
+func getProduct(c *gin.Context) {
+	var product Product
+	db.First(&product, "productid = ?", 1) // find product with id 1
+	//db.First(&user, "code = ?", "L1212") // find product with code l1212
+	c.String(200, product.Code)
+}

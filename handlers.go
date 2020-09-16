@@ -10,14 +10,12 @@ import (
 )
 
 // create new register new user in database
-
 func newUser(c *gin.Context) {
 	//db.AutoMigrate(&User{}) // Migrate the schema
 
 	var users User
 	var err error
 	if err = c.BindJSON(&users); err != nil {
-
 		fmt.Println("err is : ", err)
 		c.String(200, fmt.Sprintf("%s", err))
 		return
@@ -30,14 +28,12 @@ func newUser(c *gin.Context) {
 // authlogin login system
 func authLogin(c *gin.Context) {
 	time.Sleep(time.Second)
-
 	var user User
 	var u User
 	if err := c.BindJSON(&user); err != nil {
 		fmt.Println(err)
 	}
 	//fmt.Println("request is :", user)
-
 	db.First(&u, "email = ?", user.Email)
 	if u.Email == user.Email && u.Password == user.Password {
 		c.String(200, "ok")
@@ -65,19 +61,6 @@ func newProduct(c *gin.Context) {
 	c.JSON(200, "ok") //gin.H{"code": "ok"})
 }
 
-func getProduct(c *gin.Context) {
-	var product Product
-	db.First(&product, "productid = ?", 1) // find product with id 1
-	//db.First(&user, "code = ?", "L1212") // find product with code l1212
-	c.String(200, product.Code)
-}
-
-func index(c *gin.Context) {
-	c.HTML(200, "index.html", gin.H{
-		"title": "Test website",
-	})
-}
-
 func home(c *gin.Context) {
 	c.HTML(200, "home.html", gin.H{
 		"title": "Test website",
@@ -86,10 +69,6 @@ func home(c *gin.Context) {
 
 func acount(c *gin.Context) {
 	c.HTML(200, "acount.html", nil)
-}
-
-func imgs(c *gin.Context) {
-	c.HTML(200, "imgs.html", nil) //gin.H{})
 }
 
 func sign(c *gin.Context) {
