@@ -1,6 +1,8 @@
 package main
 
 import (
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	//"net/http"
 )
@@ -8,6 +10,8 @@ import (
 func router() {
 	//gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
+	store := cookie.NewStore([]byte("secret"))
+	r.Use(sessions.Sessions("mysession", store))
 
 	// static files //r.StaticFS("/static", http.Dir("static")) //r.StaticFile("/favicon.ico", "./assets/favicon.ico")
 	r.Static("/a", "./assets")
@@ -15,6 +19,7 @@ func router() {
 	//r.LoadHTMLFiles("/templates/index.html", "/templates/test.html") //r.LoadHTMLGlob("templates/*")
 	r.LoadHTMLGlob("templates/**/*")
 
+	r.GET("/incr", session)
 	// api
 	r.POST("/newuser", newUser)
 	r.POST("/login", authLogin)

@@ -1,12 +1,8 @@
 package main
 
-//"fmt"
-//"github.com/gin-gonic/gin"
-//"github.com/jinzhu/gorm"
-//"github.com/jinzhu/gorm/dialects/mysql"
+import ()
 
 func init() {
-
 	setdb()
 }
 func main() {

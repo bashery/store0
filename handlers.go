@@ -3,11 +3,28 @@ package main
 
 import (
 	"fmt"
-	"time"
-
+	"github.com/gin-contrib/sessions"
+	//"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
-	//"net/http"
+	"time"
 )
+
+func session(c *gin.Context) {
+
+	session := sessions.Default(c)
+	var count int
+	v := session.Get("count")
+	if v == nil {
+		count = 0
+	} else {
+		count = v.(int)
+		count++
+	}
+	session.Set("count", count)
+	session.Save()
+	c.JSON(200, gin.H{"count": count})
+
+}
 
 // create new register new user in database
 func newUser(c *gin.Context) {
