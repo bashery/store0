@@ -53,6 +53,17 @@ func authLogin(c *gin.Context) {
 	//fmt.Println("request is :", user)
 	db.First(&u, "email = ?", user.Email)
 	if u.Email == user.Email && u.Password == user.Password {
+		session := sessions.Default(c)
+
+		var newUser User
+		v := session.Get("newSession")
+		if v == nil {
+			newUser = user
+		}
+		session.Set("newSession", newUser)
+		fmt.Println("session of : ", newUser)
+		session.Save()
+
 		c.String(200, "ok")
 		return
 	}
