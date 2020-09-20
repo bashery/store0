@@ -1,5 +1,4 @@
 {{template "header.html"}}
-{{template "navbar.html"}}
 <body>
     <nav>
         <a href="/">home</a>
@@ -7,8 +6,8 @@
     </nav>
     <h1>{{.Title}}</h1>
     <div id="input">
-         <span v-if="nilf" style="background-color: #F29D8A">email or password is not correct</span><br>
-         <span v-if="nilr" style="background-color: #F29D8A">email or password is not correct</span><br>
+         <span v-if="nilf" >email or password is not correct</span><br>
+         <span v-if="nilr" >email or password is not correct</span><br>
 
          <h2>login page</h2>
          <input v-model="user.email" type="text" placeholder="email" pattern=".{6,40}" autofocus><br><br>
