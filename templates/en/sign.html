@@ -7,10 +7,10 @@
     </nav>
 
     <div id=sign>
-    <input v-model="user.username" type="text" placeholder="username" pattern=".{4,10}" required title="4 to 30 characters" autofocus ><br><br>
-    <input v-model="user.password" type="password" placeholder="password" pattern=".{6,}" required title="6 characters minimum"><br><br>
-    <input v-model="user.email" type="text" pattern=".{14,}" placeholder="email"><br><br>
-    <input v-model="user.phon" type="text" pattern=".{10,12}" placeholder="nember phon"><br><br>
+    <input v-model="user.username" type="text" placeholder="username" pattern=".{4,10}" required title="4 to 30 characters" autofocus required><br><br>
+    <input v-model="user.password" type="password" placeholder="password" pattern=".{6,}" required title="6 characters minimum" required><br><br>
+    <input v-model="user.email" type="text" pattern=".{14,}" placeholder="email" required><br><br>
+    <input v-model="user.phon" type="text" pattern=".{10,12}" placeholder="nember phon" required><br><br>
     <button v-on:click="signup" id="submit" title="resgister in this site" value=Check>submit</button>
     </div>
 
@@ -64,7 +64,6 @@ var sign_up = new Vue({
 })
 
 </script>
-{{template "style.html"}}
 <style>
 
 #sign {

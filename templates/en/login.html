@@ -10,8 +10,8 @@
          <span v-if="nilr" >email or password is not correct</span><br>
 
          <h2>login page</h2>
-         <input v-model="user.email" type="text" placeholder="email" pattern=".{6,40}" autofocus><br><br>
-         <input v-model="user.password" type="password" placeholder=password ><br><br>
+         <input v-model="user.email" type="text" placeholder="email" pattern=".{6,40}" autofocus required><br><br>
+         <input v-model="user.password" type="password" placeholder=password required><br><br>
          <button v-on:click="login" >login</button>
      </div>
 
@@ -31,7 +31,6 @@
 
      methods: {
          login: function() { // undefined
-             var resp = ''
              if (this.user.email.length <= 10 || this.user.password.length < 6) {
                  this.nilf = true
              } else {
@@ -41,9 +40,8 @@
                         console.log(response.data)
                         location.replace("http://localhost:8080")
                     } else {
-                        resp = response.data
                         //this.nil = true // way not ?
-                        console.log("this.nil is : "+this.nil)
+                        alert("user name or pass is not correct")
                         console.log(response.data)
                     }
                 })
@@ -51,18 +49,12 @@
                      console.log("Have an: "+ error)
                 });
             }
-             // TODO edeit this message login uncorrect email/password:
-             setTimeout(() => { 
-                 if (resp != 'ok') {
-                 this.nilr = true
-             }}, 1500);
         } 
     },
 })
 </script>
 <script src="a/app.js"></script>
 </body>
-{{template "style.html"}}
 <style>
 
 #input {
@@ -76,7 +68,6 @@
     margin-right: -50%;
     transform: translate(-50%, -50%)
 }
-
 
 </style>
 </html>
