@@ -2,17 +2,11 @@
    padding:0;  
    margin:0;                                          
 }       
-
 nav {
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-
-    //border: 1px;
-    //border-style: solid;
-    //border-color:#fbbb;
     padding: 10px;
-    //margin: 10px;
-    background-color: #fbba;
+    background-color: #CFCFCF;//#fbba;
 }
 nav:hover {
     box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
@@ -22,13 +16,13 @@ nav a {
     padding: 10px;
 }
 nav a:hover {
-    color:#000;
-    //background-color:#a3ffd4;
-    background-color:#FAEBD7;
+    //color:#000;
+    background-color:#F3F3F3;
+    box-shadow: 0 1px 2px 0 #f3f3f3;//rgba(243, 243, 243, 1);//rgba(0,0,0,0.2);
 }
 
 body {
-    background-color: #a3ffd4;
+    //background-color: #a3ffd4;
 }
 
 button {
@@ -46,8 +40,6 @@ nav > a {
     padding-left:10px;
 }
 #center {
-//position:center;
-padding:150px;
+    padding:150px;
 }
 
-//footer {background-color:#ffba;}
