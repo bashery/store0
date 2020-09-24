@@ -3,10 +3,13 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/gin-contrib/sessions"
 	//"github.com/gin-contrib/sessions/cookie"
-	"github.com/gin-gonic/gin"
+
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 func session(c *gin.Context) {
