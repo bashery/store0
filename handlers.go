@@ -13,7 +13,6 @@ import (
 )
 
 func session(c *gin.Context) {
-
 	session := sessions.Default(c)
 	var count int
 	v := session.Get("count")
