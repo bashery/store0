@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"github.com/gin-contrib/sessions"
-	//"github.com/gin-contrib/sessions/cookie"
 
+	//"github.com/gin-contrib/sessions/cookie"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -25,13 +25,11 @@ func session(c *gin.Context) {
 	session.Set("count", count)
 	session.Save()
 	c.JSON(200, gin.H{"count": count})
-
 }
 
 // create new register new user in database
 func newUser(c *gin.Context) {
 	//db.AutoMigrate(&User{}) // Migrate the schema
-
 	var users User
 	var err error
 	if err = c.BindJSON(&users); err != nil {
@@ -82,7 +80,6 @@ func getUser(c *gin.Context) {
 // handle product
 func newProduct(c *gin.Context) {
 	db.AutoMigrate(&Product{}) // Migrate the schema
-
 	var product Product
 	if err := c.BindJSON(&product); err != nil {
 		fmt.Println("err is : ", err)
