@@ -1,11 +1,7 @@
 {{template "header.html"}}
-<body>
-    <nav>
-        <a href="/">home</a>
-        <a href="/sign">signup</a>
-    </nav>
-    <h1>{{.Title}}</h1>
-    <div id="input">
+
+<h1>{{.Title}}</h1>
+  <div id="input">
          <span v-if="nilf" >email or password is not correct</span><br>
          <span v-if="nilr" >email or password is not correct</span><br>
 
