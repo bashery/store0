@@ -30,15 +30,12 @@ body {
     background-color: #F8F8F8;
     margin-top:50px;
 }
-
 button {
     width:264px;
 }
-
 span {
     background-color: #F29D8A;
 }
-
 nav > a {
     padding-left:10px;
 }

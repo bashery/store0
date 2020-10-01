@@ -1,6 +1,5 @@
-
-
-
+//$("img").hide();
+//$('.hello').hide();
 /*
 Vue.component('test', {
     template:'<h1>test component </h1>'
