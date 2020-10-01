@@ -1,7 +1,8 @@
 * {    
-   padding:0;  
-   padding-top:20px;  
-   margin:0;                                          
+   //padding:0;  
+   //padding-top:20px;  
+   //margin-top:20px;                                          
+   margin-left:0px;                                          
 }       
 nav {
     box-shadow: 0 2px 4px 0 #CFCFCF;// rgba(0,0,0,0.2);
@@ -12,6 +13,7 @@ nav {
     position: fixed;
     top: 0px;
     width: 100%;
+    //margin-left:-7px;
 }
 nav:hover {
     box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
@@ -21,23 +23,18 @@ nav a {
     padding: 10px;
 }
 nav a:hover {
-    //color:#000;
-    //background-color:#f2e8e8;
     background-color: #b4deee;
-    box-shadow: 0 1px 2px 0 #e8e8e8;//rgba(243, 243, 243, 1);//rgba(0,0,0,0.2);
+    box-shadow: 0 1px 2px 0 #e8e8e8;
 }
-
 body {
     background-color: #F8F8F8;
+    margin-top:50px;
 }
 
 button {
     width:264px;
 }
 
-input {
-    width:250px;
-}
 span {
     background-color: #F29D8A;
 }
