@@ -1,21 +1,21 @@
 {{template "header.html"}}
+<body>
 
 <h1>{{.Title}}</h1>
-  <div id="input">
-         <span v-if="nilf" >email or password is not correct</span><br>
-         <span v-if="nilr" >email or password is not correct</span><br>
+<form id=input action="">
+    <span v-if="nilf" >email or password is not correct</span><br>
+    <span v-if="nilr" >email or password is not correct</span><br>
 
-         <h2>login page</h2>
-         <input v-model="user.email" type="text" placeholder="email" pattern=".{6,40}" autofocus required><br><br>
-         <input v-model="user.password" type="password" placeholder=password required><br><br>
-         <button v-on:click="login" >login</button>
-     </div>
+    <h2>login page</h2>
+    <input v-model="user.email" type="text" placeholder="email" pattern=".{6,40}" autofocus required><br><br>
+    <input v-model="user.password" type="password" placeholder=password required><br><br>
+    <button v-on:click="login" >login</button>
+</form>
 
-       <script>
-
+<script>
 // post new tweet
- var login_form = new Vue({
-     el: '#input',
+var login_form = new Vue({
+     el: 'form',
      data:{
          nilf : false,
          nilr: false,
@@ -52,7 +52,6 @@
 <script src="a/app.js"></script>
 </body>
 <style>
-
 #input {
     position: center;
     height: 10em;
@@ -64,6 +63,8 @@
     margin-right: -50%;
     transform: translate(-50%, -50%)
 }
-
+button {
+    width:220px;
+}
 </style>
 </html>
