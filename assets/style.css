@@ -1,22 +1,22 @@
 * {    
-   //padding:0;  
-   //padding-top:20px;  
-   //margin-top:20px;                                          
+   /* padding:0;  
+   padding-top:20px;  
+   margin-top:20px; */                                    
    margin-left:0px;                                          
 }       
 button {
     width:220px;
 }
 nav {
-    box-shadow: 0 2px 4px 0 #CFCFCF;// rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px 0 #CFCFCF;/* rgba(0,0,0,0.2);*/
     transition: 0.3s;
     padding: 10px;
     background-color: #f2efef;
-    //transparent:0.5;
     position: fixed;
     top: 0px;
     width: 100%;
-    //margin-left:-7px;
+    /* transparent:0.5;
+    margin-left:-7px; */
 }
 nav:hover {
     box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
@@ -51,7 +51,7 @@ nav > a {
   	animation-delay: 500ms;
 }
 
-// fadeIn animation
+/* fadeIn animation */
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
@@ -71,5 +71,3 @@ nav > a {
     opacity: 1;
   }
 }
-
-
