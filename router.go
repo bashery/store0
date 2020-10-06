@@ -19,7 +19,7 @@ func router() {
 	//r.LoadHTMLFiles("/templates/index.html", "/templates/test.html") //r.LoadHTMLGlob("templates/*")
 	r.LoadHTMLGlob("templates/**/*")
 
-	r.GET("/incr", session)
+	r.GET("/incr", sessionTest)
 	// api
 	r.POST("/newuser", newUser)
 	r.POST("/login", authLogin)

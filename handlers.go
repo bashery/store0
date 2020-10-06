@@ -3,16 +3,13 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/gin-contrib/sessions"
-
-	//"github.com/gin-contrib/sessions/cookie"
 	"time"
 
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
 
-func session(c *gin.Context) {
+func sessionTest(c *gin.Context) {
 	session := sessions.Default(c)
 	var count int
 	v := session.Get("count")
@@ -22,9 +19,44 @@ func session(c *gin.Context) {
 		count = v.(int)
 		count++
 	}
+
 	session.Set("count", count)
 	session.Save()
 	c.JSON(200, gin.H{"count": count})
+}
+
+func home(c *gin.Context) {
+	session := sessions.Default(c)
+	//v := session.Get("count")
+	u := session.Get("suser")
+	fmt.Println(u)
+	c.HTML(200, "home.html", u) //gin.H{"session": v})
+}
+
+func authLogin(c *gin.Context) {
+	time.Sleep(time.Second)
+	var user User
+	var u User
+	if err := c.BindJSON(&user); err != nil {
+		fmt.Println(err)
+	}
+	db.First(&u, "email = ?", user.Email)
+	if u.Email == user.Email && u.Password == user.Password {
+
+		session := sessions.Default(c)
+		var suser string
+		v := session.Get("suser")
+		if v == nil {
+			suser = user.Email
+		}
+		fmt.Println("suser : ", suser)
+		session.Set("suser", suser)
+		session.Save()
+
+		c.String(200, "ok")
+		return
+	}
+	c.String(200, user.Username+" not autorizy")
 }
 
 // create new register new user in database
@@ -39,35 +71,6 @@ func newUser(c *gin.Context) {
 	}
 	db.Create(&users)
 	c.String(200, "ok") //gin.H{"code": "ok"})
-}
-
-//var loginUsers map[string]string
-// authlogin login system
-func authLogin(c *gin.Context) {
-	time.Sleep(time.Second)
-	var user User
-	var u User
-	if err := c.BindJSON(&user); err != nil {
-		fmt.Println(err)
-	}
-	//fmt.Println("request is :", user)
-	db.First(&u, "email = ?", user.Email)
-	if u.Email == user.Email && u.Password == user.Password {
-		session := sessions.Default(c)
-
-		var newUser User
-		v := session.Get("newSession")
-		if v == nil {
-			newUser = user
-		}
-		session.Set("newSession", newUser)
-		fmt.Println("session of : ", newUser)
-		session.Save()
-
-		c.String(200, "ok")
-		return
-	}
-	c.String(200, user.Username+" not autorizy")
 }
 
 func getUser(c *gin.Context) {
@@ -86,12 +89,6 @@ func newProduct(c *gin.Context) {
 	}
 	db.Create(&product)
 	c.JSON(200, "ok") //gin.H{"code": "ok"})
-}
-
-func home(c *gin.Context) {
-	c.HTML(200, "home.html", gin.H{
-		"title": "Test website",
-	})
 }
 
 func acount(c *gin.Context) {
