@@ -1,4 +1,6 @@
 {{template "header.html"}}
+   <a id="acount" href="/{{.}}">{{.}}</a>
+   </nav>
 <body>
 
 <h1>{{.Title}}</h1>
@@ -63,6 +65,9 @@ var login_form = new Vue({
 }
 button {
     width:220px;
+}
+#acount {
+    align:right;
 }
 </style>
 </html>
