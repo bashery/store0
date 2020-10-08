@@ -1,18 +1,36 @@
 {{template "header.html"}}    
+</nav>
 <body>
-    <form action="/sign">
+    <form>
        <input v-model="user.username" type="text" placeholder="username" pattern=".{4,10}" required title="4 to 30 characters" autofocus required><br><br>
        <input v-model="user.password" type="password" placeholder="password" pattern=".{6,}" required title="6 characters minimum" required><br><br>
        <input v-model="user.email" type="text" pattern=".{14,}" placeholder="email" required><br><br>
        <input v-model="user.phon" type="text" pattern=".{10,12}" placeholder="nember phon" required><br><br>
        <button v-on:click="signup" id="submit" title="resgister in this site" value=Check>submit</button>
-    </form>
+    <form>
 </body>
 
+<style>
+form {
+    position:center;
+    height: 20em;
+    position: relative; 
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+#submi {
+    width: relative;
+}
+</style>
 <script>
 // sign_up logic
 var sign_up = new Vue({
-     el: 'form',
+     el: '#input',
      data:{
          nil : false,
          user: {
@@ -57,22 +75,4 @@ var sign_up = new Vue({
 })
 
 </script>
-<style>
-
-form {
-    position:center;
-    height: 15em;
-    position: relative; 
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
-}
-
-#submit {
-    width: relative;
-}
-</style>
 </html>

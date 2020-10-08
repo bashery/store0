@@ -92,7 +92,9 @@ func newProduct(c *gin.Context) {
 }
 
 func acount(c *gin.Context) {
-	c.HTML(200, "acount.html", nil)
+	session := sessions.Default(c)
+	user := session.Get("suser")
+	c.HTML(200, "acount.html", user)
 }
 
 func sign(c *gin.Context) {
