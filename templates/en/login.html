@@ -5,51 +5,11 @@
 
 <h1>{{.Title}}</h1>
 <div id=input>
-    <span v-if="nilf" >email or password is not correct</span><br>
-    <span v-if="nilr" >email or password is not correct</span><br>
     <h2>login page</h2>
-    <input v-model="user.email" type="text" placeholder="email" pattern=".{6,40}" autofocus required><br><br>
-    <input v-model="user.password" type="password" placeholder=password required><br><br>
-    <button v-on:click="login" >login</button>
+    <input type="text" placeholder="email" pattern=".{6,40}" autofocus required><br><br>
+    <input type="password" placeholder=password required><br><br>
+    <button onclick="login" >login</button>
 </div>
-<script>
-// post new tweet
-var login_form = new Vue({
-    el: '#input',
-    data:{
-         nilf : false,
-         nilr: false,
-         user: {
-            email: '',
-            password: '',
-         },
-     },
-
-     methods: {
-         login: function() { // undefined
-             if (this.user.email.length <= 10 || this.user.password.length < 6) {
-                 this.nilf = true
-             } else {
-                 axios.post('http://localhost:8080/login', this.user)
-                 .then(function (response) {
-                     if (response.data == "ok") {
-                        console.log(response.data)
-                        location.replace("http://localhost:8080")
-                    } else {
-                        //this.nil = true // way not ?
-                        alert("user name or pass is not correct")
-                        console.log(response.data)
-                    }
-                })
-                .catch(function (error) {
-                     console.log("Have an: "+ error)
-                });
-            }
-        } 
-    },
-})
-</script>
-<!-- <script src="a/app.js"></script> -->
 </body>
 <style>
 #input {
