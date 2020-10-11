@@ -19,17 +19,17 @@ func router() {
 	//r.LoadHTMLFiles("/templates/index.html", "/templates/test.html") //r.LoadHTMLGlob("templates/*")
 	r.LoadHTMLGlob("templates/**/*")
 
-	r.GET("/incr", sessionTest)
+	r.GET("/logout", logout)
 	// api
 	r.POST("/newuser", newUser)
-	r.POST("/login", authLogin)
+	r.POST("/login", login)
 	r.GET("/user", getUser)
 
 	// templates
 	r.GET("/", home)
 	r.GET("/acount", acount)
 	//r.GET("/acount/:user", acount)
-	r.GET("/login", login)
+	r.GET("/login", loginPage)
 	r.GET("/sign", sign)
 	r.GET("/stores", stores)
 	r.GET("/mystore", mystore)

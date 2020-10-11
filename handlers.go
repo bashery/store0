@@ -3,11 +3,42 @@ package main
 
 import (
 	"fmt"
-	"time"
-
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	//"net/http"
 )
+
+func logout(c *gin.Context) {
+	session := sessions.Default(c)
+	u := session.Get("suser")
+	fmt.Println(u)
+	//session.Clear(u)
+	c.HTML(200, "home.html", nil)
+}
+func login(c *gin.Context) {
+	var user User
+	var u User
+	user.Email = c.PostForm("email")
+	user.Password = c.PostForm("password")
+	fmt.Println(user.Email, user.Password)
+	db.First(&u, "email = ?", user.Email)
+	if u.Email == user.Email && u.Password == user.Password {
+		session := sessions.Default(c)
+		session.Set("suser", u.Email)
+		session.Save()
+		c.HTML(200, "home.html", session.Get("suser")) //gin.H{"session": v})
+		return
+
+		//var suser string
+		//v := session.Get("suser")
+		//if v == nil || v == "" {
+		//suser = user.Email
+		//}
+		//fmt.Println("suser : ", suser)
+	}
+	//c.Redirect(http.StatusMovedPermanently, "/login")
+	c.HTML(200, "login.html", " not correct") //gin.H{"session": v})
+}
 
 func sessionTest(c *gin.Context) {
 	session := sessions.Default(c)
@@ -29,34 +60,8 @@ func home(c *gin.Context) {
 	session := sessions.Default(c)
 	//v := session.Get("count")
 	u := session.Get("suser")
-	fmt.Println(u)
+	fmt.Println("home suser is :", u)
 	c.HTML(200, "home.html", u) //gin.H{"session": v})
-}
-
-func authLogin(c *gin.Context) {
-	time.Sleep(time.Second)
-	var user User
-	var u User
-	if err := c.BindJSON(&user); err != nil {
-		fmt.Println(err)
-	}
-	db.First(&u, "email = ?", user.Email)
-	if u.Email == user.Email && u.Password == user.Password {
-
-		session := sessions.Default(c)
-		var suser string
-		v := session.Get("suser")
-		if v == nil {
-			suser = user.Email
-		}
-		fmt.Println("suser : ", suser)
-		session.Set("suser", suser)
-		session.Save()
-
-		c.String(200, "ok")
-		return
-	}
-	c.String(200, user.Username+" not autorizy")
 }
 
 // create new register new user in database
@@ -101,7 +106,7 @@ func sign(c *gin.Context) {
 	c.HTML(200, "sign.html", nil) // gin.H{})
 }
 
-func login(c *gin.Context) {
+func loginPage(c *gin.Context) {
 	c.HTML(200, "login.html", nil)
 }
 
