@@ -19,8 +19,10 @@ func router() {
 	//r.LoadHTMLFiles("/templates/index.html", "/templates/test.html") //r.LoadHTMLGlob("templates/*")
 	r.LoadHTMLGlob("templates/**/*")
 
-	r.GET("/logout", logout)
+	//r.GET("/incr", )
+	//r.GET("/logout", logout)
 	// api
+	r.GET("/signup", signup)
 	r.POST("/newuser", newUser)
 	r.POST("/login", login)
 	r.GET("/user", getUser)
@@ -30,7 +32,6 @@ func router() {
 	r.GET("/acount", acount)
 	//r.GET("/acount/:user", acount)
 	r.GET("/login", loginPage)
-	r.GET("/sign", sign)
 	r.GET("/stores", stores)
 	r.GET("/mystore", mystore)
 	//r.GET("/about", about)

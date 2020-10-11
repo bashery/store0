@@ -5,17 +5,10 @@ import (
 	"fmt"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
-	//"net/http"
 )
 
-func logout(c *gin.Context) {
-	session := sessions.Default(c)
-	u := session.Get("suser")
-	fmt.Println(u)
-	//session.Clear(u)
-	c.HTML(200, "home.html", nil)
-}
 func login(c *gin.Context) {
+	// TODO data form validator here,
 	var user User
 	var u User
 	user.Email = c.PostForm("email")
@@ -28,32 +21,9 @@ func login(c *gin.Context) {
 		session.Save()
 		c.HTML(200, "home.html", session.Get("suser")) //gin.H{"session": v})
 		return
-
-		//var suser string
-		//v := session.Get("suser")
-		//if v == nil || v == "" {
-		//suser = user.Email
-		//}
-		//fmt.Println("suser : ", suser)
 	}
 	//c.Redirect(http.StatusMovedPermanently, "/login")
-	c.HTML(200, "login.html", " not correct") //gin.H{"session": v})
-}
-
-func sessionTest(c *gin.Context) {
-	session := sessions.Default(c)
-	var count int
-	v := session.Get("count")
-	if v == nil {
-		count = 0
-	} else {
-		count = v.(int)
-		count++
-	}
-
-	session.Set("count", count)
-	session.Save()
-	c.JSON(200, gin.H{"count": count})
+	c.HTML(200, "login.html", "not correct") // TODO use jet template
 }
 
 func home(c *gin.Context) {
@@ -67,15 +37,14 @@ func home(c *gin.Context) {
 // create new register new user in database
 func newUser(c *gin.Context) {
 	//db.AutoMigrate(&User{}) // Migrate the schema
-	var users User
-	var err error
-	if err = c.BindJSON(&users); err != nil {
-		fmt.Println("err is : ", err)
-		c.String(200, fmt.Sprintf("%s", err))
-		return
-	}
-	db.Create(&users)
-	c.String(200, "ok") //gin.H{"code": "ok"})
+	var user User
+	user.Username = c.PostForm("username")
+	user.Password = c.PostForm("password")
+	user.Email = c.PostForm("email")
+	user.Phon = c.PostForm("phon")
+	db.Create(&user)
+	fmt.Println(user)
+	c.HTML(200, "login.html", nil) //gin.H{"code": "ok"})
 }
 
 func getUser(c *gin.Context) {
@@ -102,7 +71,7 @@ func acount(c *gin.Context) {
 	c.HTML(200, "acount.html", user)
 }
 
-func sign(c *gin.Context) {
+func signup(c *gin.Context) {
 	c.HTML(200, "sign.html", nil) // gin.H{})
 }
 
@@ -117,3 +86,31 @@ func stores(c *gin.Context) {
 func mystore(c *gin.Context) {
 	c.HTML(200, "mystore.html", nil) // gin.H{})
 }
+
+/* we should use logout ??
+func logout(c *gin.Context) {
+	session := sessions.Default(c)
+	u := session.Get("suser")
+	fmt.Println("clear user session", u)
+	session.Clear()
+	fmt.Println("suser befor clear", session.Get("suser"))
+
+	c.HTML(200, "home.html", nil)
+}
+*/
+
+/* func sessionTest(c *gin.Context) {
+	session := sessions.Default(c)
+	var count int
+	v := session.Get("count")
+	if v == nil {
+		count = 0
+	} else {
+		count = v.(int)
+		count++
+	}
+
+	session.Set("count", count)
+	session.Save()
+	c.JSON(200, gin.H{"count": count})
+} */
