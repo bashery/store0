@@ -29,6 +29,16 @@ nav a:hover {
     background-color: #b4deee;
     box-shadow: 0 1px 2px 0 #e8e8e8;
 }
+
+#acount {
+    background-color:#E2E2E2;
+    margin-left:720px;
+}
+#acount:hover {
+    background-color:#FFDEAD;
+    margin-left:720px;
+}
+
 body {
     background-color: #F8F8F8;
     margin-top:50px;
