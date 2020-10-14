@@ -29,7 +29,7 @@ func router() {
 
 	// templates
 	r.GET("/", home)
-	r.GET("/acount", acount)
+	r.GET("/acount/:name", acount)
 	//r.GET("/acount/:user", acount)
 	r.GET("/login", loginPage)
 	r.GET("/stores", stores)

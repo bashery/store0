@@ -68,7 +68,8 @@ func newProduct(c *gin.Context) {
 func acount(c *gin.Context) {
 	session := sessions.Default(c)
 	user := session.Get("suser")
-	c.HTML(200, "acount.html", user)
+	name := c.Param("name")
+	c.HTML(200, "acount.html", []interface{}{user, name})
 }
 
 func signup(c *gin.Context) {
