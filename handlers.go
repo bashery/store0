@@ -69,7 +69,12 @@ func acount(c *gin.Context) {
 	session := sessions.Default(c)
 	user := session.Get("suser")
 	name := c.Param("name")
-	c.HTML(200, "acount.html", []interface{}{user, name})
+	if user == name {
+		c.HTML(200, "acount.html", []string{name, "my acount"})
+		return
+
+	}
+	c.HTML(200, "acount.html", name)
 }
 
 func signup(c *gin.Context) {
@@ -85,7 +90,9 @@ func stores(c *gin.Context) {
 }
 
 func mystore(c *gin.Context) {
-	c.HTML(200, "mystore.html", nil) // gin.H{})
+	session := sessions.Default(c)
+	name := session.Get("suser")
+	c.HTML(200, "mystore.html", name)
 }
 
 /* we should use logout ??
